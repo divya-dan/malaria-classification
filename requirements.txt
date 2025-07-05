@@ -1,0 +1,22 @@
+# Core DL framework
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Data handling & utilities
+numpy>=1.24.0
+pandas>=2.0.0
+Pillow>=9.3.0
+tqdm>=4.65.0
+
+# Plotting & evaluation
+matplotlib>=3.6.0
+scikit-learn>=1.2.0
+
+# Experiment tracking
+tensorboard>=2.12.0
+
+# Dataset
+kaggle>=1.5.13
+
+# Statistical data visualization
+seaborn>=0.12.0

@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+
+# VS Code settings
+.vscode/
+
+# Data folder (do not track data)
+data/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# PyTorch checkpoints and model weights
+*.pth
+*.pt
+*.pkl
+
+# TensorBoard logs
+runs/
+events.out.tfevents.*
+
+# PyTorch Lightning logs and checkpoints
+lightning_logs/
+checkpoints/
+
+# WandB logs
+wandb/
+
+# MLflow logs
+mlruns/
