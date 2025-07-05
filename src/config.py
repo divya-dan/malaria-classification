@@ -23,13 +23,13 @@ for d in [OUTPUT_DIR, MODEL_DIR, LOG_DIR, FIG_DIR]:
 
 # Training hyperparameters
 SEED = 19
-BATCH_SIZE = 32
-NUM_WORKERS = 4
+BATCH_SIZE = 256
+NUM_WORKERS = 8
 IMG_SIZE = 128
 LEARNING_RATE = 1e-3
 WEIGHT_DECAY = 1e-5
-EPOCHS = 5
-AUGMENT = False  # Toggle augmentation (set True for Task 2)
+EPOCHS = 100
+AUGMENT = True  # Toggle augmentation 
 
 # Device
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

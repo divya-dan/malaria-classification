@@ -1,7 +1,7 @@
 import os
 import torch
 import numpy as np
-from config import DEVICE, MODEL_DIR, BEST_MODEL_NAME
+from config import DEVICE, MODEL_DIR, BEST_MODEL_NAME, AUGMENT
 from utils import compute_metrics, plot_confusion_matrix, plot_training_curves
 from datamodule import MalariaDataModule
 from model import SimpleCNN
@@ -43,12 +43,12 @@ def evaluate():
 
     # Plot confusion matrix
     classes = dm.classes
-    cm_path = os.path.join(MODEL_DIR, 'confusion_matrix.png')
+    cm_path = os.path.join(MODEL_DIR, f'confusion_matrix{"_aug" if AUGMENT else ""}.png')
     plot_confusion_matrix(y_true, y_pred, classes, normalize=True, save_fig=cm_path)
     print(f"Confusion matrix saved to {cm_path}")
 
     # Plot training curves if available
-    history_path = os.path.join(MODEL_DIR, 'training_history.pt')
+    history_path = os.path.join(MODEL_DIR, f'training_history{"_aug" if AUGMENT else ""}.pt')
     if os.path.exists(history_path):
         history = torch.load(history_path)
         plot_training_curves(history)

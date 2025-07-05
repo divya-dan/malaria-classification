@@ -6,7 +6,7 @@ import torch.nn as nn
 from torch.utils.tensorboard import SummaryWriter
 from config import (
     DEVICE, EPOCHS, LEARNING_RATE, WEIGHT_DECAY,
-    MODEL_DIR, BEST_MODEL_NAME, LOG_DIR
+    MODEL_DIR, BEST_MODEL_NAME, LOG_DIR, AUGMENT
 )
 from utils import set_seed, compute_metrics
 from datamodule import MalariaDataModule
@@ -121,7 +121,7 @@ def train():
     writer.close()
 
     # Save final history
-    history_path = os.path.join(MODEL_DIR, 'training_history.pt')
+    history_path = os.path.join(MODEL_DIR, f"training_history{'_aug' if AUGMENT else ''}.pt")
     torch.save(history, history_path)
     print(f"Training complete. History saved to {history_path}")
 

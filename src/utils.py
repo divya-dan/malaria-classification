@@ -5,7 +5,7 @@ import torch
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
-from config import SEED, DEVICE, FIG_DIR
+from config import SEED, DEVICE, FIG_DIR, AUGMENT
 
 
 
@@ -85,6 +85,6 @@ def plot_training_curves(history: dict, metrics: list = ['loss', 'accuracy'], sa
         plt.title(f'Train vs Val {metric.title()}')
         plt.legend()
         plt.tight_layout()
-        fig_path = os.path.join(save_dir, f'{metric}_curve.png')
+        fig_path = os.path.join(save_dir, f'{metric}_curve{"_aug" if AUGMENT else ""}.png')
         plt.savefig(fig_path)
         plt.close()
