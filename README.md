@@ -32,6 +32,7 @@ To improve generalization and reduce overfitting, we randomly flip each training
 <p align="center">
     <em>Figure 2: Training and validation loss curves without data augmentation.</em>
 </p>
+
 - **Accuracy:** As shown in Figure 1, training accuracy quickly rises to nearly 100%, while validation accuracy plateaus around 95% and shows a slight downward drift over epochs, indicating overfitting.
 - **Loss:** As illustrated in Figure 2, training loss steadily decreases toward zero, but validation loss starts increasing after approximately 10 epochs—a classic sign of overfitting.
 
@@ -51,17 +52,9 @@ To improve generalization and reduce overfitting, we randomly flip each training
     <em>Figure 4: Training and validation loss curves with data augmentation.</em>
 </p>
 
+
 - **Accuracy:** As shown in Figure 3, both training and validation accuracy curves converge around 95–96% and remain closely aligned throughout training. The small fluctuations reflect the random augmentations, but overall, the curves demonstrate improved generalization compared to training without augmentation.
 - **Loss:** As illustrated in Figure 4, training and validation loss decrease together and stabilize at similar low values (~0.10), without the increase in validation loss observed in the non-augmented case.
-
-**Conclusion:** Data augmentation significantly reduces overfitting by introducing more varied examples, leading to more stable and generalizable performance on unseen data.
-
----
-
-
-
-- **Accuracy:** Both training and validation curves converge around 95–96%, and remain closely aligned throughout training. The small fluctuations reflect the random transformations but overall show improved generalization.
-- **Loss:** Training and validation loss decrease in tandem and stabilize at similar low values (\~0.10), without the runaway increase in validation loss seen without augmentation.
 
 **Conclusion:** Data augmentation significantly reduces overfitting by introducing more varied examples, leading to more stable and generalizable performance on unseen data.
 
@@ -131,5 +124,4 @@ python src/evaluate.py
 
 ## Acknowledgements
 
-This project uses the **Cell Images for Detecting Malaria** dataset on Kaggle by Iarunava et al. We gratefully acknowledge the dataset creators for enabling this research.
-
+This project uses the [**Cell Images for Detecting Malaria** dataset](https://www.kaggle.com/datasets/iarunava/cell-images-for-detecting-malaria) on Kaggle by Iarunava. We gratefully acknowledge the dataset creators for enabling this research.
