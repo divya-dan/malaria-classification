@@ -9,8 +9,10 @@ venv/
 # VS Code settings
 .vscode/
 
-# Data folder (do not track data)
-data/
+# Data folder (ignore all except scripts)
+data/*
+!data/scripts/
+!data/scripts/**
 
 # Distribution / packaging
 build/
