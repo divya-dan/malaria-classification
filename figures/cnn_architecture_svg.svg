@@ -1,0 +1,94 @@
+<svg viewBox="0 0 1200 280" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="280" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">
+    CNN Architecture for Malaria Cell Classification
+  </text>
+  
+  <!-- Input Layer -->
+  <rect x="20" y="60" width="120" height="80" rx="10" fill="#ff9a9e" stroke="#ff6b9d" stroke-width="2"/>
+  <text x="80" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Input Image</text>
+  <text x="80" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50">RGB Cell</text>
+  <text x="80" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e74c3c">3 × H × W</text>
+  
+  <!-- Arrow 1 -->
+  <path d="M 150 100 L 170 100" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Conv Block 1 -->
+  <rect x="180" y="60" width="120" height="80" rx="10" fill="#a8edea" stroke="#00d2ff" stroke-width="2"/>
+  <text x="240" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Conv Block 1</text>
+  <text x="240" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50">Conv2d(3→32)</text>
+  <text x="240" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50">ReLU + MaxPool</text>
+  <text x="240" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e74c3c">32 × H/2 × W/2</text>
+  
+  <!-- Arrow 2 -->
+  <path d="M 310 100 L 330 100" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Conv Block 2 -->
+  <rect x="340" y="60" width="120" height="80" rx="10" fill="#a8edea" stroke="#00d2ff" stroke-width="2"/>
+  <text x="400" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Conv Block 2</text>
+  <text x="400" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50">Conv2d(32→64)</text>
+  <text x="400" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50">ReLU + MaxPool</text>
+  <text x="400" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e74c3c">64 × H/4 × W/4</text>
+  
+  <!-- Arrow 3 -->
+  <path d="M 470 100 L 490 100" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Conv Block 3 -->
+  <rect x="500" y="60" width="120" height="80" rx="10" fill="#a8edea" stroke="#00d2ff" stroke-width="2"/>
+  <text x="560" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Conv Block 3</text>
+  <text x="560" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50">Conv2d(64→128)</text>
+  <text x="560" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50">ReLU + MaxPool</text>
+  <text x="560" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e74c3c">128 × H/8 × W/8</text>
+  
+  <!-- Arrow 4 -->
+  <path d="M 630 100 L 650 100" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Flatten -->
+  <rect x="660" y="60" width="100" height="80" rx="10" fill="#ffecd2" stroke="#ff8a80" stroke-width="2"/>
+  <text x="710" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Flatten</text>
+  <text x="710" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50">Reshape to 1D</text>
+  <text x="710" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e74c3c">128 × (H/8)²</text>
+  
+  <!-- Arrow 5 -->
+  <path d="M 770 100 L 790 100" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- FC Layer 1 -->
+  <rect x="800" y="60" width="100" height="80" rx="10" fill="#c2e9fb" stroke="#667eea" stroke-width="2"/>
+  <text x="850" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">FC Layer 1</text>
+  <text x="850" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50">Linear + ReLU</text>
+  <text x="850" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50">Dropout(0.5)</text>
+  <text x="850" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e74c3c">256 units</text>
+  
+  <!-- Arrow 6 -->
+  <path d="M 910 100 L 930 100" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Output -->
+  <rect x="940" y="60" width="100" height="80" rx="10" fill="#96fbc4" stroke="#4ecdc4" stroke-width="2"/>
+  <text x="990" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Output</text>
+  <text x="990" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50">Linear Layer</text>
+  <text x="990" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50">Single Logit</text>
+  <text x="990" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e74c3c">1 unit</text>
+  
+  <!-- Feature Extraction Section Label -->
+  <rect x="180" y="160" width="440" height="30" rx="5" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="400" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Feature Extraction</text>
+  
+  <!-- Classification Section Label -->
+  <rect x="660" y="160" width="380" height="30" rx="5" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="850" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Classification</text>
+  
+  <!-- Key Features -->
+  <text x="600" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">Key Features</text>
+  <text x="600" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#34495e">Progressive feature extraction (3→32→64→128 channels) • 8× spatial downsampling • Dropout regularization</text>
+  <text x="600" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#34495e">Binary classification with BCEWithLogitsLoss • Lightweight design for efficiency</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3498db"/>
+    </marker>
+  </defs>
+</svg>
