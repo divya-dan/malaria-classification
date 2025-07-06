@@ -6,8 +6,43 @@ This project uses the Kaggle **Cell Images for Detecting Malaria** dataset to cl
 
 ## Model Architecture
 
-Our classifier is a simple, lightweight convolutional neural network designed to distinguish parasitized from uninfected malaria cells. It begins with three successive convolutional blocks—each block consists of a convolution layer followed by a ReLU activation and spatial downsampling via max pooling—to extract hierarchical image features. The resulting feature maps are then flattened and passed through two fully connected layers (with dropout between them) to learn high‑level representations, culminating in a single output logit. We train with binary cross‑entropy loss on these logits to optimize classification accuracy.
+Our classifier is a lightweight convolutional neural network designed to distinguish parasitized from uninfected malaria cells through hierarchical feature extraction and binary classification.
 
+```
+Input Image → Conv Block 1 → Conv Block 2 → Conv Block 3 → Flatten → FC1 → FC2 → Output
+(3×H×W)      (32×H/2×W/2)   (64×H/4×W/4)   (128×H/8×W/8)   (1D)     (256)  (1)   Logit
+```
+
+### Architecture Components
+
+| Layer | Operation | Input → Output | Parameters |
+|-------|-----------|----------------|------------|
+| **Conv Block 1** | Conv2d + ReLU + MaxPool2d | 3×H×W → 32×H/2×W/2 | kernel=3×3, padding=1, pool=2×2 |
+| **Conv Block 2** | Conv2d + ReLU + MaxPool2d | 32×H/2×W/2 → 64×H/4×W/4 | kernel=3×3, padding=1, pool=2×2 |
+| **Conv Block 3** | Conv2d + ReLU + MaxPool2d | 64×H/4×W/4 → 128×H/8×W/8 | kernel=3×3, padding=1, pool=2×2 |
+| **Flatten** | Reshape to 1D | 128×H/8×W/8 → 128×(H/8)² | - |
+| **FC1** | Linear + ReLU + Dropout | flattened_dim → 256 | dropout=0.5 |
+| **FC2** | Linear | 256 → 1 | Binary classification logit |
+
+### Key Features
+
+- **Lightweight Design**: Simple architecture optimized for efficiency
+- **Progressive Feature Extraction**: Channel depth increases (3→32→64→128) while spatial dimensions decrease (8× total downsampling)
+- **Regularization**: 50% dropout between fully connected layers prevents overfitting
+- **Binary Classification**: Single output logit with BCEWithLogitsLoss for parasitized vs. uninfected classification
+
+### Architecture Diagram
+
+<p align="center">
+    <img src="./figures/cnn_architecture_svg.svg" alt="CNN model architecture" width="800"/>
+</p>
+
+### Training Configuration
+
+- **Loss Function**: Binary Cross-Entropy with Logits (`BCEWithLogitsLoss`)
+- **Optimization**: Adam optimizer with learning rate scheduling
+- **Input**: RGB cell images normalized to [0,1]
+- **Output**: Single logit (sigmoid applied during inference for probability)
 ---
 
 ## Data Augmentation
